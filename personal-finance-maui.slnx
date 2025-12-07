@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="personal-finance-maui/personal-finance-maui.csproj">
+    <Deploy />
+  </Project>
+</Solution>
