@@ -7,9 +7,9 @@ namespace personal_finance_maui.Repositories
     {
         private readonly LiteDatabase _liteDatabase;
         private readonly string collectionName = "transactions";
-        public TransactionRepository()
+        public TransactionRepository(LiteDatabase liteDatabase)
         {
-            _liteDatabase = new LiteDatabase("Filename=C:/AppData/database.db;Connection=Shared;");
+            _liteDatabase = liteDatabase;
         }
 
         public List<Transaction> GetAll()
