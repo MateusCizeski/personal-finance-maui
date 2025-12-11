@@ -6,4 +6,9 @@ public partial class TransactionList : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	private void OnClickToTransactionAdd(Object sender, EventArgs eventArgs)
+	{
+		App.Current.MainPage = new TransactionAdd();
+	}
 }

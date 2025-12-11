@@ -7,6 +7,12 @@
         <Label 
             Text="Transaction List"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" 
+        />
+
+        <Button 
+            Text="+"
+            Clicked="OnClickToTransactionAdd"
+        />
     </VerticalStackLayout>
 </ContentPage>
