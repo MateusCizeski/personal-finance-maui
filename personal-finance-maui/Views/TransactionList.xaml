@@ -14,5 +14,9 @@
             Text="+"
             Clicked="OnClickToTransactionAdd"
         />
+        <Button 
+            Text="Edit"
+            Clicked="OnClickToTransactionEdit"
+        />
     </VerticalStackLayout>
 </ContentPage>

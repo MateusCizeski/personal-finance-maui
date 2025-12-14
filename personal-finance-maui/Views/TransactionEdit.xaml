@@ -3,10 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="personal_finance_maui.Views.TransactionEdit"
              Title="TransactionEdit">
-    <VerticalStackLayout>
-        <Label 
-            Text="Transaction Edit"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout Spacing="10">
+        <Border 
+        Margin="15" 
+        Padding="15" 
+        BackgroundColor="Black" 
+        Stroke="Transparent" 
+        StrokeShape="RoundRectangle 30"
+     >
+            <Grid RowDefinitions="Auto" ColumnDefinitions="*, 30">
+                <Label 
+                Text="Update"
+                HorizontalOptions="Center" 
+                Grid.Row="0"
+                Grid.Column="0"
+                TextColor="White"
+            />
+
+                <Label 
+                Text="X" 
+                HorizontalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="1"
+                TextColor="White"
+            />
+            </Grid>
+        </Border>
+
+        <Grid ColumnDefinitions="*,*" Margin="30, 0">
+            <RadioButton 
+            IsChecked="True" 
+            Content="Income"
+         />
+            <RadioButton 
+            HorizontalOptions="End" 
+            Grid.Column="1" 
+            Content="Expense"
+         />
+        </Grid>
+
+        <Entry Placeholder="Name" Margin="15, 0"/>
+
+        <DatePicker Margin="15, 0"/>
+
+        <Entry Placeholder="Value" Margin="15, 0"/>
+
+        <Button Text="Save" HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>

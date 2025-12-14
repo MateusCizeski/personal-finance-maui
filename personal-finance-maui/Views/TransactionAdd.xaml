@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="personal_finance_maui.Views.TransactionAdd"
              Title="TransactionAdd">
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="10">
         <Border 
             Margin="15" 
             Padding="15" 
@@ -13,7 +13,7 @@
          >
             <Grid RowDefinitions="Auto" ColumnDefinitions="*, 30">
                 <Label 
-                    Text="Novo"
+                    Text="New"
                     HorizontalOptions="Center" 
                     Grid.Row="0"
                     Grid.Column="0"
@@ -29,5 +29,25 @@
                 />
             </Grid>
         </Border>
+
+        <Grid ColumnDefinitions="*,*" Margin="30, 0">
+            <RadioButton 
+                IsChecked="True" 
+                Content="Income"
+             />
+            <RadioButton 
+                HorizontalOptions="End" 
+                Grid.Column="1" 
+                Content="Expense"
+             />
+        </Grid>
+
+        <Entry Placeholder="Name" Margin="15, 0"/>
+
+        <DatePicker Margin="15, 0"/>
+
+        <Entry Placeholder="Value" Margin="15, 0"/>
+
+        <Button Text="Save" HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>
