@@ -9,10 +9,10 @@ public partial class TransactionList : ContentPage
 
 	private void OnClickToTransactionAdd(Object sender, EventArgs eventArgs)
 	{
-		App.Current.MainPage = new TransactionAdd();
+		Navigation.PushModalAsync(new TransactionAdd());
 	}
 	private void OnClickToTransactionEdit(Object sender, EventArgs eventArgs)
 	{
-		App.Current.MainPage = new TransactionEdit();
+        Navigation.PushModalAsync(new TransactionEdit());
 	}
 }
