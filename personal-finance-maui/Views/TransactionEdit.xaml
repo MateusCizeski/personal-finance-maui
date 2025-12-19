@@ -18,15 +18,21 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 TextColor="White"
-            />
-
-                <Label 
-                Text="X" 
-                HorizontalOptions="Center"
-                Grid.Row="0"
-                Grid.Column="1"
-                TextColor="White"
-            />
+                />
+    
+                <Image 
+                    HorizontalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    TextColor="White"
+                    Source="close.png"
+                    WidthRequest="17"
+                    HeightRequest="17"
+                >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
             </Grid>
         </Border>
 

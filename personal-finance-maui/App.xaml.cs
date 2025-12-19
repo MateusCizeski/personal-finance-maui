@@ -11,9 +11,7 @@ namespace personal_finance_maui
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(
-                new NavigationPage(new TransactionList())
-            );
+            return new Window(new NavigationPage(new TransactionList()));
         }
     }
 }
