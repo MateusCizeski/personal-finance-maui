@@ -1,22 +1,78 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="personal_finance_maui.Views.TransactionList"
-             Title="TransactionList">
+<ContentPage 
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="personal_finance_maui.Views.TransactionList"
+        Title="TransactionList"
+        NavigationPage.HasNavigationBar="False"
+>
     <VerticalStackLayout>
-        <Label 
-            Text="Transaction List"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-        />
+        <Grid Padding="15" ColumnDefinitions="50, *, Auto">
+            <Label 
+                Text="S"
+                BackgroundColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                FontSize="20"
+                TextColor="Black"
+             />
+            
+            <VerticalStackLayout Grid.Column="1">
+                <Label Text="Salário"  TextColor="Black"/>
+                <Label Text="10/10/2025"  TextColor="#BABABA"/>
+            </VerticalStackLayout>
 
+            <Label 
+                Text="R$ 3.600,00" 
+                Grid.Column="2" 
+                VerticalOptions="Center"  
+                TextColor="{StaticResource Tertiary}"
+             />
+        </Grid>
+        
+ 
         <Button 
             Text="+"
             Clicked="OnClickToTransactionAdd"
+            HorizontalOptions="Center"
         />
+        
         <Button 
             Text="Edit"
             Clicked="OnClickToTransactionEdit"
+            HorizontalOptions="Center"
         />
+
+        <Border 
+            Margin="10" 
+            BackgroundColor="{StaticResource Black}" 
+            Stroke="Transparent"
+            Padding="10, 15"
+            StrokeShape="RoundRectangle 30"
+         >
+            <Grid ColumnDefinitions="*, 80" RowDefinitions="Auto, Auto, 30, Auto, Auto">
+                <Label Text="Saldo" TextColor="#979797" FontSize="18"/>
+                <Label Text="R$ 2.760,00" Grid.Row="1" FontSize="32"/>
+
+                <Button 
+                    Text="+"
+                    Clicked="OnClickToTransactionAdd"
+                    HorizontalOptions="Center"
+                    Grid.Column="1"
+                    Grid.RowSpan="2"
+                    WidthRequest="54"
+                    HeightRequest="54"
+                    FontSize="48"
+                    Padding="0"
+                    CornerRadius="27"
+                />
+
+                <Label Text="Receitas" Grid.Row="3" TextColor="#979797" FontSize="14"/>
+                <Label Text="R$ 2.760,00" Grid.Row="4" FontSize="14"/>
+
+                <Label Text="Despesas" Grid.Row="3" Grid.Column="1" TextColor="#979797" FontSize="14"/>
+                <Label Text="R$ 2.760,00" Grid.Row="4" Grid.Column="1" FontSize="14"/>
+            </Grid>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>
