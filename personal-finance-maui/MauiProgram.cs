@@ -1,6 +1,7 @@
 ﻿using LiteDB;
 using Microsoft.Extensions.Logging;
 using personal_finance_maui.Repositories;
+using personal_finance_maui.Views;
 
 namespace personal_finance_maui
 {
@@ -16,7 +17,8 @@ namespace personal_finance_maui
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
-                .RegisterDatabaseRepositories();
+                .RegisterDatabaseRepositories()
+                .RegisterViews();
 
 #if DEBUG
             builder.Logging.AddDebug();
@@ -33,6 +35,14 @@ namespace personal_finance_maui
 
             mauiAppBuilder.Services.AddTransient<ITransactionRepository, TransactionRepository>();
 
+            return mauiAppBuilder;
+        }
+
+        public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddTransient<TransactionAdd>();
+            mauiAppBuilder.Services.AddTransient<TransactionEdit>();
+            mauiAppBuilder.Services.AddTransient<TransactionList>();
             return mauiAppBuilder;
         }
     }

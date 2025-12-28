@@ -61,9 +61,13 @@
             Margin="15, 0"
         />
 
-        <DatePicker x:Name="DatePickerDate" Margin="15, 0"/>
+        <DatePicker x:Name="DatePickerDate" Margin="{OnPlatform Default='15,0', MacCatalyst='15, 15, 15, 0'}" />
 
-        <Entry Placeholder="Value" Margin="15, 0"/>
+        <Entry
+            x:Name="EntryValue"
+            Margin="15,0"
+            Placeholder="Valor" 
+        />
 
         <Button 
             Clicked="OnButton_Clicked_Save"
