@@ -4,14 +4,11 @@ namespace personal_finance_maui
 {
     public partial class App : Application
     {
-        public App()
+        public App(TransactionList listPage)
         {
             InitializeComponent();
-        }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new NavigationPage(new TransactionList()));
+            MainPage = new NavigationPage(listPage);
         }
     }
 }

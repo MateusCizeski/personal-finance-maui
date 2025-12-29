@@ -6,37 +6,49 @@
         Title="TransactionList"
         NavigationPage.HasNavigationBar="False"
 >
-    <VerticalStackLayout>
-        <Grid Padding="15" ColumnDefinitions="50, *, Auto">
-            <Label 
-                Text="S"
-                BackgroundColor="White"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" 
-                FontSize="20"
-                TextColor="Black"
-             />
-            
-            <VerticalStackLayout Grid.Column="1">
-                <Label Text="Salário"  TextColor="Black"/>
-                <Label Text="10/10/2025"  TextColor="#BABABA"/>
-            </VerticalStackLayout>
+    <ContentPage.Resources>
+        <ResourceDictionary Source="/Resources/Styles/Colors.xaml"/>
+    </ContentPage.Resources>
 
-            <Label 
-                Text="R$ 3.600,00" 
-                Grid.Column="2" 
-                VerticalOptions="Center"  
-                TextColor="{StaticResource Tertiary}"
-             />
-        </Grid>
-        
- 
+    <VerticalStackLayout>
+        <CollectionView x:Name="CollectionViewTransactions">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="15" ColumnDefinitions="50, *, Auto">
+                        <Label 
+                            Text="S"
+                            BackgroundColor="White"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            FontSize="20"
+                            TextColor="Black"
+                         />
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="{Binding Name}"  TextColor="Black"/>
+                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"  TextColor="#BABABA"/>
+                        </VerticalStackLayout>
+
+                        <Label 
+                            Text="{Binding Value, StringFormat='{0:C}'}" 
+                            Grid.Column="2" 
+                            VerticalOptions="Center"  
+                            TextColor="{StaticResource Tertiary}"
+                         />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+
+
         <Button 
             Text="+"
             Clicked="OnClickToTransactionAdd"
             HorizontalOptions="Center"
         />
-        
+
         <Button 
             Text="Edit"
             Clicked="OnClickToTransactionEdit"

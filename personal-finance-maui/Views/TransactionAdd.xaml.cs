@@ -57,11 +57,13 @@ public partial class TransactionAdd : ContentPage
             sb.AppendLine("O campo 'Nome' deve ser preenchido!");
             valid = false;
         }
+
         if (string.IsNullOrEmpty(EntryValue.Text) || string.IsNullOrWhiteSpace(EntryValue.Text))
         {
             sb.AppendLine("O campo 'Valor' deve ser preenchido!");
             valid = false;
         }
+
         double result;
         if (!string.IsNullOrEmpty(EntryValue.Text) && !double.TryParse(EntryValue.Text, out result))
         {
