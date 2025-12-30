@@ -1,3 +1,4 @@
+using CommunityToolkit.Mvvm.Messaging;
 using personal_finance_maui.Models;
 using personal_finance_maui.Repositories;
 using System.Text;
@@ -28,6 +29,8 @@ public partial class TransactionAdd : ContentPage
 
         SaveTransactionInDatabase();
         Navigation.PopModalAsync();
+
+        WeakReferenceMessenger.Default.Send<string>(string.Empty);
 
        var count = _transactionRepository.GetAll().Count;
 
