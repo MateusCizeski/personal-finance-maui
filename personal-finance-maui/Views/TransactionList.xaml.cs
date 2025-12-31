@@ -22,7 +22,16 @@ public partial class TransactionList : ContentPage
 
 	private void Reload()
 	{
-        CollectionViewTransactions.ItemsSource = _transactionRepository.GetAll();
+		var items = _transactionRepository.GetAll();
+        CollectionViewTransactions.ItemsSource = items;
+
+		double income = items.Where(a => a.Type == Models.TransactionType.Income).Sum(a => a.Value);
+		double expanse = items.Where(a => a.Type == Models.TransactionType.Expanse).Sum(a => a.Value);
+		double balance = income - expanse;
+
+		LabelIncome.Text = income.ToString("C");
+		LabelExpanse.Text = expanse.ToString("C");
+		LabelBalance.Text = balance.ToString("C");
     }
 
 	private void OnClickToTransactionAdd(Object sender, EventArgs eventArgs)
