@@ -38,21 +38,24 @@
 
         <Grid ColumnDefinitions="*,*" Margin="30, 0">
             <RadioButton 
-            IsChecked="True" 
-            Content="Income"
-         />
+                IsChecked="True" 
+                Content="Income"
+                x:Name="RadioIncome"
+            />
+            
             <RadioButton 
-            HorizontalOptions="End" 
-            Grid.Column="1" 
-            Content="Expense"
-         />
+                HorizontalOptions="End" 
+                Grid.Column="1" 
+                Content="Expense"
+                x:Name="RadioExpanse"
+            />
         </Grid>
 
-        <Entry Placeholder="Name" Margin="15, 0"/>
+        <Entry x:Name="EntryName" Placeholder="Name" Margin="15, 0"/>
 
-        <DatePicker Margin="15, 0"/>
+        <DatePicker x:Name="DatePickerDate" Margin="15, 0"/>
 
-        <Entry Placeholder="Value" Margin="15, 0"/>
+        <Entry x:Name="EntryValue" Placeholder="Value" Margin="15, 0"/>
 
         <Button Text="Save" HorizontalOptions="Center"/>
     </VerticalStackLayout>

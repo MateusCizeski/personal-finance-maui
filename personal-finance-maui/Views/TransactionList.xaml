@@ -15,6 +15,9 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="15" ColumnDefinitions="50, *, Auto">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="TapGestureRecognizer_Tapped"/>
+                        </Grid.GestureRecognizers>
                         <Label 
                             Text="S"
                             BackgroundColor="White"
@@ -49,12 +52,6 @@
             HorizontalOptions="Center"
         />
 
-        <Button 
-            Text="Edit"
-            Clicked="OnClickToTransactionEdit"
-            HorizontalOptions="Center"
-        />
-
         <Border 
             Margin="10" 
             BackgroundColor="{StaticResource Black}" 
@@ -64,7 +61,7 @@
          >
             <Grid ColumnDefinitions="*, 80" RowDefinitions="Auto, Auto, 30, Auto, Auto">
                 <Label Text="Saldo" TextColor="#979797" FontSize="18"/>
-                <Label x:Name="LabelBalance" Text="R$ 2.760,00" Grid.Row="1" FontSize="32"/>
+                <Label x:Name="LabelBalance" Grid.Row="1" FontSize="32"/>
 
                 <Button 
                     Text="+"
@@ -80,10 +77,10 @@
                 />
 
                 <Label Text="Receitas" Grid.Row="3" TextColor="#979797" FontSize="14"/>
-                <Label x:Name="LabelIncome" Text="R$ 2.760,00" Grid.Row="4" FontSize="14"/>
+                <Label x:Name="LabelIncome" Grid.Row="4" FontSize="14"/>
 
                 <Label Text="Despesas" Grid.Row="3" Grid.Column="1" TextColor="#979797" FontSize="14"/>
-                <Label x:Name="LabelExpanse" Text="R$ 2.760,00" Grid.Row="4" Grid.Column="1" FontSize="14"/>
+                <Label x:Name="LabelExpanse" Grid.Row="4" Grid.Column="1" FontSize="14"/>
             </Grid>
         </Border>
     </VerticalStackLayout>

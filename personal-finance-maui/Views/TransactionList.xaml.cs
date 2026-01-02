@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.Messaging;
+using personal_finance_maui.Models;
 using personal_finance_maui.Repositories;
 
 namespace personal_finance_maui.Views;
@@ -41,10 +42,15 @@ public partial class TransactionList : ContentPage
 
 		Navigation.PushModalAsync(transactionAdd);
 	}
-	private void OnClickToTransactionEdit(Object sender, EventArgs eventArgs)
-	{
-        var transactionEdit = Handler.MauiContext.Services.GetService<TransactionEdit>();
 
+    private void TapGestureRecognizerTappedToTransactionEdit(object sender, TappedEventArgs e)
+    {
+		var grid = (Grid)sender;
+		var gesture = (TapGestureRecognizer)grid.GestureRecognizers[0];
+		Transaction transaction = (Transaction)gesture.CommandParameter;
+
+        var transactionEdit = Handler.MauiContext.Services.GetService<TransactionEdit>();
+		transactionEdit.SetTransactionToEdit(transaction);
         Navigation.PushModalAsync(transactionEdit);
-	}
+    }
 }
