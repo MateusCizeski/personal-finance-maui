@@ -19,7 +19,7 @@
                 Grid.Column="0"
                 TextColor="White"
                 />
-    
+
                 <Image 
                     HorizontalOptions="Center"
                     Grid.Row="0"
@@ -30,11 +30,13 @@
                     HeightRequest="17"
                 >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        <TapGestureRecognizer Tapped="TapGestureRecognizerTappedToClose" />
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>
         </Border>
+
+        <Label Margin="30, 0" TextColor="Red" x:Name="LabelError" IsVisible="False" />
 
         <Grid ColumnDefinitions="*,*" Margin="30, 0">
             <RadioButton 
@@ -42,21 +44,34 @@
                 Content="Income"
                 x:Name="RadioIncome"
             />
-            
+
             <RadioButton 
                 HorizontalOptions="End" 
                 Grid.Column="1" 
                 Content="Expense"
                 x:Name="RadioExpanse"
             />
+
         </Grid>
 
-        <Entry x:Name="EntryName" Placeholder="Name" Margin="15, 0"/>
+        <Entry 
+            x:Name="EntryName" 
+            Placeholder="Name" 
+            Margin="15, 0"
+        />  
 
-        <DatePicker x:Name="DatePickerDate" Margin="15, 0"/>
+        <DatePicker x:Name="DatePickerDate" Margin="{OnPlatform Default='15,0', MacCatalyst='15, 15, 15, 0'}" />
 
-        <Entry x:Name="EntryValue" Placeholder="Value" Margin="15, 0"/>
+        <Entry
+            x:Name="EntryValue"
+            Margin="15,0"
+            Placeholder="Valor" 
+        />
 
-        <Button Text="Save" HorizontalOptions="Center"/>
+        <Button 
+            Clicked="OnButton_Clicked_Save"
+            Text="Save" 
+            HorizontalOptions="Center"
+        />
     </VerticalStackLayout>
 </ContentPage>

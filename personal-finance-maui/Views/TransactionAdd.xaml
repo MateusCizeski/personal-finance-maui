@@ -31,7 +31,7 @@
                     HeightRequest="17"
                 >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        <TapGestureRecognizer Tapped="TapGestureRecognizerTappedToClose" />
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>
