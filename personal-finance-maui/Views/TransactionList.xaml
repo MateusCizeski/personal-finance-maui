@@ -3,11 +3,16 @@
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         x:Class="personal_finance_maui.Views.TransactionList"
-        Title="TransactionList"
         NavigationPage.HasNavigationBar="False"
+        xmlns:converters="clr-namespace:personal_finance_maui.Libraries.Converters"
+        Title="TransactionList"
 >
     <ContentPage.Resources>
         <ResourceDictionary Source="/Resources/Styles/Colors.xaml"/>
+        <ResourceDictionary>
+            <converters:TransactionValueConverter x:Key="TransactionValueConverter" />
+            <converters:TransactionValueColorConverter x:Key="TransactionValueColorConverter" />
+        </ResourceDictionary>
     </ContentPage.Resources>
 
     <VerticalStackLayout>
@@ -33,18 +38,15 @@
                         </VerticalStackLayout>
 
                         <Label 
-                            Text="{Binding Value, StringFormat='{0:C}'}" 
-                            Grid.Column="2" 
-                            VerticalOptions="Center"  
-                            TextColor="{StaticResource Tertiary}"
+                            Text="{Binding ., Converter={StaticResource TransactionValueConverter}}"
+                            TextColor="{Binding ., Converter={StaticResource TransactionValueColorConverter}}"
+                            VerticalOptions="Center"
+                            Grid.Column="2"
                          />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-
-
 
         <Button 
             Text="+"
@@ -60,8 +62,17 @@
             StrokeShape="RoundRectangle 30"
          >
             <Grid ColumnDefinitions="*, 80" RowDefinitions="Auto, Auto, 30, Auto, Auto">
-                <Label Text="Saldo" TextColor="#979797" FontSize="18"/>
-                <Label x:Name="LabelBalance" Grid.Row="1" FontSize="32"/>
+                <Label 
+                    Text="Saldo" 
+                    TextColor="#979797" 
+                    FontSize="18"
+                />
+                
+                <Label 
+                    x:Name="LabelBalance" 
+                    Grid.Row="1" 
+                    FontSize="32"
+                />
 
                 <Button 
                     Text="+"
@@ -76,11 +87,41 @@
                     CornerRadius="27"
                 />
 
-                <Label Text="Receitas" Grid.Row="3" TextColor="#979797" FontSize="14"/>
-                <Label x:Name="LabelIncome" Grid.Row="4" FontSize="14"/>
+                <Label 
+                    Text="Receitas" 
+                    Grid.Row="3" 
+                    TextColor="#979797" 
+                    FontSize="14"
+                />
+                
+                <Label 
+                    x:Name="LabelIncome" 
+                    Grid.Row="4" 
+                    FontSize="14"
+                />
 
-                <Label Text="Despesas" Grid.Row="3" Grid.Column="1" TextColor="#979797" FontSize="14"/>
-                <Label x:Name="LabelExpanse" Grid.Row="4" Grid.Column="1" FontSize="14"/>
+                <Label 
+                    Text="Despesas" 
+                    Grid.Row="3" 
+                    Grid.Column="1" 
+                    TextColor="#979797" 
+                    FontSize="14"
+                />
+                
+                <Label 
+                    Text="Despesas" 
+                    Grid.Row="3" 
+                    Grid.Column="1" 
+                    TextColor="#979797" 
+                    FontSize="14"
+                />
+                
+                <Label 
+                    x:Name="LabelExpanse" 
+                    Grid.Row="4" 
+                    Grid.Column="1" 
+                    FontSize="14"
+                />
             </Grid>
         </Border>
     </VerticalStackLayout>
