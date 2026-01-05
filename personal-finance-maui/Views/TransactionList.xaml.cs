@@ -53,4 +53,16 @@ public partial class TransactionList : ContentPage
 		transactionEdit.SetTransactionToEdit(transaction);
         Navigation.PushModalAsync(transactionEdit);
     }
+
+    private async void TapGestureRecognizerTappedToDelete(object sender, TappedEventArgs e)
+    {
+		bool result = await App.Current.MainPage.DisplayAlert("Exluir!", "Tem certeza que deseja excluir?", "Sim", "Não");
+
+		if(result == true)
+		{
+			Transaction transaction = (Transaction)e.Parameter;
+			_transactionRepository.Delete(transaction);
+			Reload();
+		}
+    }
 }

@@ -23,14 +23,27 @@
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="TapGestureRecognizer_Tapped"/>
                         </Grid.GestureRecognizers>
-                        <Label 
-                            Text="S"
-                            BackgroundColor="White"
-                            VerticalOptions="Center" 
-                            HorizontalOptions="Center" 
-                            FontSize="20"
-                            TextColor="Black"
-                         />
+                        <Border 
+                            WidthRequest="40" 
+                            HeightRequest="40" 
+                            BackgroundColor="White" 
+                            StrokeShape="RoundRectangle 20"
+                            Stroke="Transparent"
+                        >
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Tapped="TapGestureRecognizerTappedToDelete" />
+                            </Border.GestureRecognizers>
+                            <Label 
+                                Text="S"
+                                FontSize="20"
+                                BackgroundColor="White"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Center" 
+                                TextColor="Black"
+                                Margin="11, 2"
+                                Padding="2"
+                             />
+                        </Border>
 
                         <VerticalStackLayout Grid.Column="1">
                             <Label Text="{Binding Name}"  TextColor="Black"/>
