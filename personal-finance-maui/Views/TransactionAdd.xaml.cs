@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.Messaging;
+using personal_finance_maui.Libraries.Utils;
 using personal_finance_maui.Models;
 using personal_finance_maui.Repositories;
 using System.Text;
@@ -10,14 +11,15 @@ public partial class TransactionAdd : ContentPage
     private readonly ITransactionRepository _transactionRepository;
 	public TransactionAdd(ITransactionRepository transactionRepository)
 	{
-        _transactionRepository = transactionRepository;
-
         InitializeComponent();
+
+        _transactionRepository = transactionRepository;
 	}
 
     private void TapGestureRecognizerTappedToClose(object sender, TappedEventArgs e)
     {
-		Navigation.PopModalAsync();
+        KeyboardFixBugs.HideKeyboard();
+        Navigation.PopModalAsync();
     }
 
     private void OnButton_Clicked_Save(object sender, EventArgs e)
@@ -28,13 +30,11 @@ public partial class TransactionAdd : ContentPage
         }
 
         SaveTransactionInDatabase();
+
+        KeyboardFixBugs.HideKeyboard();
         Navigation.PopModalAsync();
 
         WeakReferenceMessenger.Default.Send<string>(string.Empty);
-
-       var count = _transactionRepository.GetAll().Count;
-
-        App.Current.MainPage.DisplayAlert("Mensagem!", $"Existem {count} registros(s) no banco!", "OK");
     }
 
     private void SaveTransactionInDatabase()

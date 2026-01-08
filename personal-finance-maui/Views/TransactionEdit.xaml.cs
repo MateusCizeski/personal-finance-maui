@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.Messaging;
+using personal_finance_maui.Libraries.Utils;
 using personal_finance_maui.Models;
 using personal_finance_maui.Repositories;
 using System.Text;
@@ -8,12 +9,11 @@ namespace personal_finance_maui.Views;
 public partial class TransactionEdit : ContentPage
 {
     private Transaction _transaction;
-    private readonly ITransactionRepository _transactionRepository;
-    public TransactionEdit(ITransactionRepository transactionRepository)
+    private ITransactionRepository _repository;
+    public TransactionEdit(ITransactionRepository repository)
 	{
-        _transactionRepository = transactionRepository;
-
         InitializeComponent();
+        _repository = repository;
 	}
     
     public void SetTransactionToEdit(Transaction transaction)
@@ -35,6 +35,7 @@ public partial class TransactionEdit : ContentPage
 
     private void TapGestureRecognizerTappedToClose(object sender, TappedEventArgs e)
     {
+        KeyboardFixBugs.HideKeyboard();
         Navigation.PopModalAsync();
     }
 
@@ -45,6 +46,7 @@ public partial class TransactionEdit : ContentPage
             return;
         }
 
+        KeyboardFixBugs.HideKeyboard();
         SaveTransactionInDatabase();
         Navigation.PopModalAsync();
 
@@ -62,7 +64,7 @@ public partial class TransactionEdit : ContentPage
             Value = double.Parse(EntryValue.Text),
         };
 
-        _transactionRepository.Update(transaction);
+        _repository.Update(transaction);
     }
 
     private bool IsValidData()
